@@ -4,7 +4,8 @@ int main() {
 
     int a[5] = {5,1,3,4,1};
     int size = sizeof(a)/sizeof(a[0]); 
-    for(int i = 1;i < size;i++) {
+
+   for(int i = 1;i < size;i++) {
         int x = a[i];
         int j = i-1;
         while((j >= 0) && (a[j] > x)){
