@@ -60,10 +60,14 @@ class removeRepeats
       list.add(0);
       list.add(0);
       list.add(2);
+      
       list.print();
       removeRepeats();
       System.out.println("=====================");
       list.print();
+      System.out.println("=====================");
+      if(findIfLoop() == null)
+         System.out.println("No Loop in the linked list.");
    }
 
    public static void removeRepeats()
@@ -85,5 +89,37 @@ class removeRepeats
          }
          n = n.next;
       }
-   }   
+   }
+   
+   public static Node findIfLoop()
+   {
+      Node s = list.head;
+      Node f = list.head;
+
+      if(s == null)  
+         return null;
+
+      while(f != null && f.next != null)
+      {
+         s = s.next;
+         f = f.next.next;
+         if(s == f)
+            break;
+      }
+
+      if(f == null || f.next == null)
+      {
+         return null; //No Loop/Cycle found.
+      }
+
+      //Finding the start of the cycle.
+      
+      s = list.head;
+      while(s != f)
+      {
+         s = s.next;
+         f = f.next;
+      }
+      return f;
+   }
 }
