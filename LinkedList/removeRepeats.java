@@ -57,17 +57,24 @@ class removeRepeats
       list.add(0);
       list.add(0);
       list.add(0);
-      list.add(0);
+      list.add(5);
       list.add(0);
       list.add(2);
       
       list.print();
+      System.out.println("=====================");
+      System.out.println("Kth to Last Node is: " + kthToLastNode(3).data);
+      System.out.println("=====================");
       removeRepeats();
       System.out.println("=====================");
       list.print();
       System.out.println("=====================");
-      if(findIfLoop() == null)
+      Node temp = findIfLoop();
+      if(temp == null)
          System.out.println("No Loop in the linked list.");
+      else
+         System.out.println("The starting of the loop is: " + temp.data);
+      System.out.println("=====================");
    }
 
    public static void removeRepeats()
@@ -121,5 +128,28 @@ class removeRepeats
          f = f.next;
       }
       return f;
+   }
+
+   public static Node kthToLastNode(int k)
+   {
+      //Make sure no cycle.
+
+      Node p1 = list.head;
+      Node p2 = list.head;
+
+      for(int i = 0; i < k; i++)
+      {
+         if(p1 == null)
+            return null;
+
+         p1 = p1.next;
+      }
+
+      while(p1 != null)
+      {
+         p1 = p1.next;
+         p2 = p2.next;
+      }
+      return p2;
    }
 }
