@@ -62,12 +62,24 @@ class manip
       return result.toString();
    }
 
+   static int numOfDiff(int x, int y)
+   {  
+      if(x == y)
+         return 0;
+      int count = 0;
+      for(int a = x ^ y; a != 0; a = a >> 1)
+         count = count + (a & 1);
+
+      return count;
+
+   }
    public static void main(String args[])
    {
       System.out.println(setBit(4,4));
       System.out.println(Integer.toBinaryString(numberManip(19,1024,2,6)));
       System.out.println(toString(1));
       System.out.println(toString(0.5));
+      System.out.println(numOfDiff(2,3));
    }
 
 
