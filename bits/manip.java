@@ -73,6 +73,12 @@ class manip
       return count;
 
    }
+
+   static int swapOddEven(int x)
+   {
+      return ((x &  0xAAAAAAAA) >>> 1) | ((x & 0x55555555) << 1);
+   }
+   
    public static void main(String args[])
    {
       System.out.println(setBit(4,4));
@@ -80,6 +86,7 @@ class manip
       System.out.println(toString(1));
       System.out.println(toString(0.5));
       System.out.println(numOfDiff(2,3));
+      System.out.println(swapOddEven(23));
    }
 
 
